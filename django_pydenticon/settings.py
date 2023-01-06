@@ -49,7 +49,12 @@ if not all([isinstance(f, str) for f in PYDENTICON_FOREGROUND]):
 if not isinstance(PYDENTICON_BACKGROUND, str):
     raise ImproperlyConfigured("Setting PYDENTICON_BACKGROUND must be a string representation of colour")
 
-if not isinstance(PYDENTICON_DIGEST, collections.Callable):
+"""
+Note from DJ 1/6/23
+Changed collections.Callable to collections.abc.Callable in accordance with newer python spec: 
+https://docs.python.org/3/library/collections.abc.html
+"""
+if not isinstance(PYDENTICON_DIGEST, collections.abc.Callable):
     raise ImproperlyConfigured("Setting PYDENTICON_DIGEST must be a callable digest (usually from hashlib module).")
 
 if not isinstance(PYDENTICON_INVERT, bool):
